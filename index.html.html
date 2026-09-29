@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ktcs 기타큐슈 골프 원정대</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans KR"', 'sans-serif'],
+                    },
+                    colors: {
+                        golf: {
+                            light: '#dcfce7',
+                            DEFAULT: '#22c55e',
+                            dark: '#166534',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f3f4f6; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Hide scrollbar for clean app look */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+    </style>
+</head>
+<body class="flex justify-center h-screen overflow-hidden">
+
+    <div class="w-full max-w-md bg-white h-full flex flex-col shadow-2xl relative">
+        
+        <!-- Header -->
+        <header class="bg-golf text-white p-4 sticky top-0 z-10 rounded-b-2xl shadow-md">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold"><i class="fa-solid fa-golf-ball-tee mr-2"></i>ktcs 기타큐슈 골프 ⛳</h1>
+                <button onclick="shareApp()" class="p-2 bg-white/20 rounded-full hover:bg-white/30 transition">
+                    <i class="fa-solid fa-share-nodes"></i>
+                </button>
+            </div>
+            <p class="text-xs text-golf-light mt-1">10.06(화) ~ 10.09(금) | 3박 4일</p>
+        </header>
+
+        <main class="flex-1 overflow-y-auto p-4 pb-24 bg-gray-50">
+
+            <!-- TAB 1: 일정표 -->
+            <div id="tab-schedule" class="tab-content active">
+                <h2 class="text-lg font-bold text-gray-800 mb-4 border-l-4 border-golf pl-2">상세 일정표</h2>
+                
+                <!-- Day 1 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-4">
+                    <div class="flex items-center justify-between mb-2 border-b pb-2">
+                        <h3 class="font-bold text-golf-dark"><i class="fa-regular fa-calendar mr-1"></i> 10/6 (화) 1일차</h3>
+                        <span class="text-xs font-semibold bg-blue-100 text-blue-600 px-2 py-1 rounded-full">출국 & 라운딩</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex"><span class="w-16 font-semibold text-gray-800">08:10</span> <span>청주 출발 (에어로케이) ✈️</span></li>
+                        <li class="flex"><span class="w-16 font-semibold text-gray-800">09:15</span> <span>기타큐슈 도착 & 렌트카(노아) 수령</span></li>
+                        <li class="flex"><span class="w-16 font-semibold text-golf">12:00</span> <span><b>1차 골프 라운딩 (오후티)</b> ⛳</span></li>
+                        <li class="flex"><span class="w-16 font-semibold text-gray-800">18:00</span> <span>시내 호텔 체크인 및 휴식</span></li>
+                        <li class="flex bg-orange-50 p-2 rounded-lg border border-orange-100">
+                            <span class="w-16 font-semibold text-orange-600">19:00</span> 
+                            <span>🥩 <b>[재민 추천]</b> 입에서 녹는 <b>와규 야키니쿠</b>에 시원한 생맥주 회식!</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-4">
+                    <div class="flex items-center justify-between mb-2 border-b pb-2">
+                        <h3 class="font-bold text-golf-dark"><i class="fa-regular fa-calendar mr-1"></i> 10/7 (수) 2일차</h3>
+                        <span class="text-xs font-semibold bg-green-100 text-green-600 px-2 py-1 rounded-full">골프 & 쇼핑</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex"><span class="w-16 font-semibold text-golf">08:00</span> <span><b>2차 골프 라운딩 (오전티)</b> ⛳</span></li>
+                        <li class="flex"><span class="w-16 font-semibold text-gray-800">14:00</span> <span>모지코 레트로 관광 (맥주 공방 등)</span></li>
+                        <li class="flex bg-purple-50 p-2 rounded-lg border border-purple-100">
+                            <span class="w-16 font-semibold text-purple-600">16:30</span> 
+                            <span>🥃 <b>[쇼핑]</b> 야마야(Yamaya) 고쿠라점 - <b>위스키 & 사케 리큐르샵 털기</b></span>
+                        </li>
+                        <li class="flex bg-orange-50 p-2 rounded-lg border border-orange-100">
+                            <span class="w-16 font-semibold text-orange-600">18:30</span> 
+                            <span>🍲 <b>[재민 추천]</b> 후쿠오카 명물 <b>모츠나베(곱창전골)</b>와 하이볼</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Day 3 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-4">
+                    <div class="flex items-center justify-between mb-2 border-b pb-2">
+                        <h3 class="font-bold text-golf-dark"><i class="fa-regular fa-calendar mr-1"></i> 10/8 (목) 3일차</h3>
+                        <span class="text-xs font-semibold bg-green-100 text-green-600 px-2 py-1 rounded-full">골프 & 쇼핑</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex"><span class="w-16 font-semibold text-golf">08:00</span> <span><b>3차 골프 라운딩 (오전티)</b> ⛳</span></li>
+                        <li class="flex bg-purple-50 p-2 rounded-lg border border-purple-100">
+                            <span class="w-16 font-semibold text-purple-600">15:00</span> 
+                            <span>🛍️ <b>[쇼핑]</b> 우오마치 상점가 & 돈키호테 - <b>지인 기념품, 파스, 간식 쇼핑</b></span>
+                        </li>
+                        <li class="flex"><span class="w-16 font-semibold text-gray-800">17:00</span> <span>호텔 휴식 및 짐 정리</span></li>
+                        <li class="flex bg-orange-50 p-2 rounded-lg border border-orange-100">
+                            <span class="w-16 font-semibold text-orange-600">18:30</span> 
+                            <span>🥟 <b>[재민 추천]</b> 앗 뜨거! <b>고쿠라 철나베 교자</b> (마지막 밤 불태우기🔥)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Day 4 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-4">
+                    <div class="flex items-center justify-between mb-2 border-b pb-2">
+                        <h3 class="font-bold text-golf-dark"><i class="fa-regular fa-calendar mr-1"></i> 10/9 (금) 4일차</h3>
+                        <span class="text-xs font-semibold bg-gray-200 text-gray-600 px-2 py-1 rounded-full">귀국</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex"><span class="w-16 font-semibold text-gray-800">08:30</span> <span>체크아웃 & 고쿠라역 시로야 베이커리 빵 사기</span></li>
+                        <li class="flex"><span class="w-16 font-semibold text-gray-800">10:00</span> <span>기타큐슈 공항 도착 & 렌트카 반납</span></li>
+                        <li class="flex"><span class="w-16 font-semibold text-gray-800">11:55</span> <span>기타큐슈 출발 ✈️</span></li>
+                        <li class="flex"><span class="w-16 font-semibold text-gray-800">13:10</span> <span>청주 도착 및 해산 (수고하셨습니다!)</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TAB 2: 예산/경비 -->
+            <div id="tab-budget" class="tab-content">
+                <h2 class="text-lg font-bold text-gray-800 mb-4 border-l-4 border-blue-500 pl-2">1인당 예상 경비</h2>
+                
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+                    <table class="w-full text-sm text-left">
+                        <thead class="bg-gray-50 text-gray-700">
+                            <tr>
+                                <th class="px-4 py-3">항목</th>
+                                <th class="px-4 py-3 text-right">금액 (원)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr>
+                                <td class="px-4 py-3 font-medium text-gray-800"><i class="fa-solid fa-plane text-blue-500 mr-2"></i>항공권</td>
+                                <td class="px-4 py-3 text-right">314,200</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-medium text-gray-800"><i class="fa-solid fa-bed text-indigo-500 mr-2"></i>숙소 (3박)</td>
+                                <td class="px-4 py-3 text-right">175,000</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-medium text-gray-800"><i class="fa-solid fa-car text-gray-500 mr-2"></i>렌터카</td>
+                                <td class="px-4 py-3 text-right">150,000</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-medium text-gray-800"><i class="fa-solid fa-golf-ball-tee text-golf mr-2"></i>골프 (3회)</td>
+                                <td class="px-4 py-3 text-right">360,000</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-medium text-gray-800"><i class="fa-solid fa-utensils text-orange-500 mr-2"></i>식비/기타</td>
+                                <td class="px-4 py-3 text-right">200,000</td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="bg-blue-50 font-bold text-blue-900">
+                            <tr>
+                                <td class="px-4 py-3">1인 총 합계 예상</td>
+                                <td class="px-4 py-3 text-right text-lg">약 1,199,200원</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="text-xs text-gray-500 bg-gray-100 p-3 rounded-lg">
+                    * 렌터카 톨게이트 비용 및 주유비는 별도 정산 필요<br>
+                    * 환율 및 현지 사정에 따라 변동될 수 있습니다.
+                </div>
+            </div>
+
+            <!-- TAB 3: 추천 장소 -->
+            <div id="tab-tips" class="tab-content">
+                <h2 class="text-lg font-bold text-gray-800 mb-4 border-l-4 border-orange-500 pl-2">재민's Pick! 맛집 & 쇼핑</h2>
+                
+                <div class="space-y-4">
+                    <!-- 맛집 추천 1 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-orange-100 p-4">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-orange-100 text-orange-600 p-3 rounded-full"><i class="fa-solid fa-fire-burner"></i></div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-base">야키니쿠 텐가 (또는 칸테키야)</h3>
+                                <p class="text-xs text-orange-500 font-semibold mb-1">1일차 저녁 추천</p>
+                                <p class="text-sm text-gray-600">첫날 라운딩 후 피로를 날려줄 규슈 흑모와규 맛집. 마블링 터지는 고기와 생맥주는 필수입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 맛집 추천 2 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-orange-100 p-4">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-orange-100 text-orange-600 p-3 rounded-full"><i class="fa-solid fa-bowl-food"></i></div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-base">하카타 모츠나베 오오야마</h3>
+                                <p class="text-xs text-orange-500 font-semibold mb-1">2일차 저녁 추천</p>
+                                <p class="text-sm text-gray-600">진한 미소(된장) 베이스의 통통한 대창전골! 아뮤플라자에 있어 접근성도 좋고 하이볼 안주로 제격입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 맛집 추천 3 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-orange-100 p-4">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-orange-100 text-orange-600 p-3 rounded-full"><i class="fa-solid fa-dumpling"></i></div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-base">고쿠라 철나베 (테츠나베)</h3>
+                                <p class="text-xs text-orange-500 font-semibold mb-1">3일차 저녁 추천</p>
+                                <p class="text-sm text-gray-600">기타큐슈 명물! 뜨거운 철판에 바삭하게 구워 나오는 한입 교자. 마지막 밤 회식 분위기 내기 최고!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-2 border-dashed">
+
+                    <!-- 쇼핑 추천 1 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-purple-100 p-4">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-purple-100 text-purple-600 p-3 rounded-full"><i class="fa-solid fa-wine-bottle"></i></div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-base">야마야 (Yamaya) 주류전문점</h3>
+                                <p class="text-xs text-purple-500 font-semibold mb-1">위스키 & 사케 쇼핑</p>
+                                <p class="text-sm text-gray-600">산토리 가쿠빈, 야마자키, 히비키, 닷사이 등 한국보다 훨씬 저렴하게 주류 득템이 가능한 필수 코스.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 쇼핑 추천 2 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-purple-100 p-4">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-purple-100 text-purple-600 p-3 rounded-full"><i class="fa-solid fa-bag-shopping"></i></div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-base">돈키호테 & 우오마치 상점가</h3>
+                                <p class="text-xs text-purple-500 font-semibold mb-1">기념품 및 드럭스토어</p>
+                                <p class="text-sm text-gray-600">동전파스, 카베진, 명란 센베이(멘베이), 기타큐슈 명물 '네지초코(나사 초콜릿)' 등 지인 선물 구매.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: 사전 준비물 체크리스트 -->
+            <div id="tab-checklist" class="tab-content">
+                <h2 class="text-lg font-bold text-gray-800 mb-4 border-l-4 border-teal-500 pl-2">사전 준비물 체크리스트</h2>
+                
+                <div class="space-y-4">
+                    <!-- 필수품 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+                        <h3 class="font-bold text-gray-800 mb-3 flex items-center"><i class="fa-solid fa-passport text-teal-600 mr-2"></i> 필수품 & 서류</h3>
+                        <div class="space-y-3">
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-teal-500 w-5 h-5"><span class="text-sm text-gray-700">여권 (만료일 6개월 이상 必)</span></label>
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-teal-500 w-5 h-5"><span class="text-sm text-gray-700 font-bold text-red-500">국제운전면허증 & 한국 면허증 (렌터카 필수)</span></label>
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-teal-500 w-5 h-5"><span class="text-sm text-gray-700">항공권 E-티켓 / 호텔 바우처</span></label>
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-teal-500 w-5 h-5"><span class="text-sm text-gray-700">엔화 현금 (현지 식당용) & 트래블월렛</span></label>
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-teal-500 w-5 h-5"><span class="text-sm text-gray-700">돼지코 (110V 어댑터) & 보조배터리</span></label>
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-teal-500 w-5 h-5"><span class="text-sm text-gray-700">로밍, 유심 또는 eSIM 준비</span></label>
+                        </div>
+                    </div>
+
+                    <!-- 골프 용품 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+                        <h3 class="font-bold text-gray-800 mb-3 flex items-center"><i class="fa-solid fa-golf-ball-tee text-golf mr-2"></i> 골프 용품</h3>
+                        <div class="space-y-3">
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-golf w-5 h-5"><span class="text-sm text-gray-700">골프백 & <b>항공 커버(수화물용 필수)</b></span></label>
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-golf w-5 h-5"><span class="text-sm text-gray-700">골프 클럽 & 골프화</span></label>
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-golf w-5 h-5"><span class="text-sm text-gray-700">골프공 (넉넉히), 티, 볼마커</span></label>
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-golf w-5 h-5"><span class="text-sm text-gray-700">골프 장갑(여분 포함), 모자, 선글라스</span></label>
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-golf w-5 h-5"><span class="text-sm text-gray-700">거리측정기 (미리 충전하기)</span></label>
+                        </div>
+                    </div>
+
+                    <!-- 의류 및 세면도구 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+                        <h3 class="font-bold text-gray-800 mb-3 flex items-center"><i class="fa-solid fa-suitcase text-indigo-500 mr-2"></i> 의류 & 상비약</h3>
+                        <div class="space-y-3">
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-indigo-500 w-5 h-5"><span class="text-sm text-gray-700">골프복 (3일 치) 및 바람막이</span></label>
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-indigo-500 w-5 h-5"><span class="text-sm text-gray-700">평상복 및 편안한 운동화 (관광/쇼핑용)</span></label>
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-indigo-500 w-5 h-5"><span class="text-sm text-gray-700">속옷, 양말, 잠옷</span></label>
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-indigo-500 w-5 h-5"><span class="text-sm text-gray-700 font-bold">파스, 근육이완제 (라운딩 후 필수)</span></label>
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-indigo-500 w-5 h-5"><span class="text-sm text-gray-700">소화제, 지사제, 진통제</span></label>
+                            <label class="flex items-center space-x-3 cursor-pointer"><input type="checkbox" class="accent-indigo-500 w-5 h-5"><span class="text-sm text-gray-700">자외선 차단제 (선크림/선패치)</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bg-white border-t border-gray-200 flex justify-around absolute bottom-0 w-full pb-safe">
+            <button onclick="switchTab('schedule')" class="nav-btn active flex-1 py-4 text-center text-gray-400 hover:text-golf transition flex flex-col items-center">
+                <i class="fa-regular fa-calendar-check text-xl mb-1"></i>
+                <span class="text-[10px] font-bold mt-1">일정표</span>
+            </button>
+            <button onclick="switchTab('budget')" class="nav-btn flex-1 py-4 text-center text-gray-400 hover:text-blue-500 transition flex flex-col items-center">
+                <i class="fa-solid fa-wallet text-xl mb-1"></i>
+                <span class="text-[10px] font-bold mt-1">예산경비</span>
+            </button>
+            <button onclick="switchTab('tips')" class="nav-btn flex-1 py-4 text-center text-gray-400 hover:text-orange-500 transition flex flex-col items-center">
+                <i class="fa-solid fa-star text-xl mb-1"></i>
+                <span class="text-[10px] font-bold mt-1">맛집쇼핑</span>
+            </button>
+            <button onclick="switchTab('checklist')" class="nav-btn flex-1 py-4 text-center text-gray-400 hover:text-teal-500 transition flex flex-col items-center">
+                <i class="fa-solid fa-list-check text-xl mb-1"></i>
+                <span class="text-[10px] font-bold mt-1">준비물</span>
+            </button>
+        </nav>
+
+    </div>
+
+    <script>
+        // 탭 전환 로직
+        function switchTab(tabId) {
+            // 모든 탭 컨텐츠 숨기기
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            // 선택된 탭 컨텐츠 보이기
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+
+            // 네비게이션 버튼 색상 상태 변경
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-golf', 'text-blue-500', 'text-orange-500', 'text-teal-500');
+                btn.classList.add('text-gray-400');
+            });
+
+            const activeBtn = event.currentTarget;
+            activeBtn.classList.remove('text-gray-400');
+            if(tabId === 'schedule') activeBtn.classList.add('text-golf');
+            if(tabId === 'budget') activeBtn.classList.add('text-blue-500');
+            if(tabId === 'tips') activeBtn.classList.add('text-orange-500');
+            if(tabId === 'checklist') activeBtn.classList.add('text-teal-500');
+        }
+
+        // 초기 로드 시 탭 상태 설정
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstBtn = document.querySelector('.nav-btn');
+            firstBtn.classList.remove('text-gray-400');
+            firstBtn.classList.add('text-golf');
+        });
+
+        // 앱 공유 버튼 로직 (현재 URL 클립보드 복사 또는 네이티브 공유)
+        function shareApp() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'ktcs 기타큐슈 골프 일정',
+                    text: '재민이가 만든 3박4일 기타큐슈 골프 원정 일정표입니다!',
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                // 네이티브 공유 미지원 시 URL 복사
+                const dummy = document.createElement('input');
+                document.body.appendChild(dummy);
+                dummy.value = window.location.href;
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+                
+                // 알림창 대신 메시지 박스 구현 (요구사항 반영)
+                const msgBox = document.createElement('div');
+                msgBox.className = 'fixed top-20 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded shadow-lg text-sm z-50 transition-opacity duration-300';
+                msgBox.textContent = '일정표 링크가 복사되었습니다! 카톡에 붙여넣기 해주세요.';
+                document.body.appendChild(msgBox);
+                setTimeout(() => {
+                    msgBox.style.opacity = '0';
+                    setTimeout(() => document.body.removeChild(msgBox), 300);
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+</html>
